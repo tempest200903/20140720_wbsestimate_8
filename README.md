@@ -10,7 +10,7 @@ Tutorial: <http://www.mongodb.org/display/DOCS/Java+Tutorial>
 Running on OpenShift
 ----------------------------
 
-Create an account at http://openshift.redhat.com/
+Create an account at https://www.openshift.com
 
 Create a jbossas-7 application with mongodb (you can call your application whatever you want)
 
