@@ -19,7 +19,7 @@ Create a jbossas-7 application with mongodb (you can call your application whate
 Add this upstream repo
 
     cd testmongo
-    git remote add upstream -m master git://github.com/openshift/jbossas-mongoDB-quickstart.git
+    git remote add upstream -m master git://github.com/openshift-quickstart/jbossas-mongoDB-quickstart.git
     git pull -s recursive -X theirs upstream master
 
 Then push the repo upstream
