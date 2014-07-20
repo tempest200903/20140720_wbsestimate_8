@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>testmongo</groupId>
-  <artifactId>testmongo</artifactId>
+  <groupId>com.github.tempest200903</groupId>
+  <artifactId>20140720_wbsestimate_8</artifactId>
   <packaging>war</packaging>
   <version>1.0</version>
-  <name>testmongo</name>
+  <name>20140720_wbsestimate_8</name>
   <licenses>
       <license>
           <name>Apache License, Version 2.0</name>
@@ -52,4 +52,10 @@
       </build>
     </profile>
   </profiles>
+  <scm>
+  	<url>https://github.com/tempest200903/20140720_wbsestimate_8</url>
+  </scm>
+  <issueManagement>
+  	<url>https://github.com/tempest200903/20140720_wbsestimate_8</url>
+  </issueManagement>
 </project>
