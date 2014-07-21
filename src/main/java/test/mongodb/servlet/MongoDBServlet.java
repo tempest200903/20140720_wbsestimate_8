@@ -18,22 +18,23 @@ package test.mongodb.servlet;
  * MA  02110-1301, USA.
  */
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.UnknownHostException;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.UnknownHostException;
 
-import com.mongodb.Mongo;
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.Mongo;
 
 /**
  * Do some mongoDB tutorial stuff as a demo
@@ -46,6 +47,55 @@ import com.mongodb.DBCursor;
 public class MongoDBServlet extends HttpServlet {
 	private Mongo mongo;
 	private DB mongoDB;
+
+	@Override
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String cmd = request.getParameter("cmd");
+		handleCmd(cmd, response);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String cmd = request.getParameter("cmd");
+		handleCmd(cmd, response);
+	}
+
+	protected void handleCmd(String cmd, HttpServletResponse response)
+			throws IOException {
+		PrintWriter pw = response.getWriter();
+		response.setContentType("text/html");
+		if (cmd == null) {
+			// Initialize the db with some of the tutorial objects
+			tutorial(pw);
+		} else if (cmd.equalsIgnoreCase("query")) {
+
+		} else {
+			pw.format(
+					"<h1>Error, on %s</h1>\nNo support for handling the command exists yet",
+					cmd);
+		}
+		pw.flush();
+	}
+
+	protected void handleQuery(PrintWriter pw, String i) {
+		try {
+			mongoDB.requestStart();
+			DBCollection coll = mongoDB.getCollection("testCollection");
+			BasicDBObject query = new BasicDBObject();
+			query.put("i", 71);
+			DBCursor cur = coll.find(query);
+			if (cur.count() == 1)
+				pw.format(
+						"<h1>>testCollection.%s result: </h2><pre>%s</pre>\n",
+						cur.next());
+			else
+				pw.format("<h1>>testCollection.%s result</h2>No matches found!\n");
+		} finally {
+			mongoDB.requestDone();
+		}
+	}
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -69,37 +119,6 @@ public class MongoDBServlet extends HttpServlet {
 			throw new ServletException("Failed to authenticate against db: "
 					+ db);
 		}
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		String cmd = request.getParameter("cmd");
-		handleCmd(cmd, response);
-	}
-
-	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		String cmd = request.getParameter("cmd");
-		handleCmd(cmd, response);
-	}
-
-	protected void handleCmd(String cmd, HttpServletResponse response)
-			throws IOException {
-		PrintWriter pw = response.getWriter();
-		response.setContentType("text/html");
-		if (cmd == null) {
-			// Initialize the db with some of the tutorial objects
-			tutorial(pw);
-		} else if (cmd.equalsIgnoreCase("query")) {
-
-		} else {
-			pw.format(
-					"<h1>Error, on %s</h1>\nNo support for handling the command exists yet",
-					cmd);
-		}
-		pw.flush();
 	}
 
 	protected void tutorial(PrintWriter pw) {
@@ -136,24 +155,6 @@ public class MongoDBServlet extends HttpServlet {
 
 			coll.createIndex(new BasicDBObject("i", 1)); // create index on "i",
 															// ascending
-		} finally {
-			mongoDB.requestDone();
-		}
-	}
-
-	protected void handleQuery(PrintWriter pw, String i) {
-		try {
-			mongoDB.requestStart();
-			DBCollection coll = mongoDB.getCollection("testCollection");
-			BasicDBObject query = new BasicDBObject();
-			query.put("i", 71);
-			DBCursor cur = coll.find(query);
-			if (cur.count() == 1)
-				pw.format(
-						"<h1>>testCollection.%s result: </h2><pre>%s</pre>\n",
-						cur.next());
-			else
-				pw.format("<h1>>testCollection.%s result</h2>No matches found!\n");
 		} finally {
 			mongoDB.requestDone();
 		}
