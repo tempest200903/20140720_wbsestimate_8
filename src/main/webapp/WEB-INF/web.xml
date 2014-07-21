@@ -22,4 +22,19 @@
 		<url-pattern>/mongoDB</url-pattern>
 	</servlet-mapping>
 
+	<filter>
+		<filter-name>wicket.20140419_wbsestimate_3</filter-name>
+		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+		<init-param>
+			<param-name>applicationClassName</param-name>
+			<param-value>com.github.tempest200903.WicketApplication</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>wicket.20140419_wbsestimate_3</filter-name>
+		<url-pattern>/wicket</url-pattern>
+	</filter-mapping>
+
+
 </web-app>

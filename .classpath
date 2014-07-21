@@ -42,4 +42,24 @@
   <classpathentry kind="var" path="M2_REPO/org/jboss/resteasy/jaxrs-api/2.1.0.GA/jaxrs-api-2.1.0.GA.jar"/>
   <classpathentry kind="var" path="M2_REPO/stax/stax-api/1.0.1/stax-api-1.0.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/mongodb/mongo-java-driver/2.7.2/mongo-java-driver-2.7.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-core/6.13.0/wicket-core-6.13.0.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-core/6.13.0/wicket-core-6.13.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/simei/.m2/repository/org/apache/wicket/wicket-core/6.13.0/wicket-core-6.13.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-util/6.13.0/wicket-util-6.13.0.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-util/6.13.0/wicket-util-6.13.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/simei/.m2/repository/org/apache/wicket/wicket-util/6.13.0/wicket-util-6.13.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar" sourcepath="M2_REPO/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/simei/.m2/repository/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-request/6.13.0/wicket-request-6.13.0.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-request/6.13.0/wicket-request-6.13.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/simei/.m2/repository/org/apache/wicket/wicket-request/6.13.0/wicket-request-6.13.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
 </classpath>
